@@ -31,3 +31,24 @@ for (i in 1:length(gtflist)){
   system(command,intern = T)
   
 }
+
+#####heatmap 
+##only for test witll remove later
+plot_heat<-function(a,b){
+  commonTheme = list(labs(color="Density",fill="Density",
+                          x="daiding",
+                          y="daiding2"),
+                     theme_bw(),
+                     theme(legend.position=c(0,1),
+                           legend.justification=c(0,1)))
+  testh<-data.frame(a,b)
+  ggplot(data = testh,aes(a,b))+
+    stat_density2d(aes(fill=..level..,alpha=..level..),geom='polygon',colour='black') + 
+    scale_fill_continuous(low="green",high="red") +
+    geom_smooth(method=lm,linetype=2,colour="red",se=F) + 
+    guides(alpha="none") +
+    geom_point() + commonTheme
+}
+
+
+######
