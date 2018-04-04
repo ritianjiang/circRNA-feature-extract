@@ -22,6 +22,18 @@ for (i in 1:length(filelist)){
 }
 
 #extract the fasta seq by gffread
+gtflist<-list.files(pattern="*gff")
+for (i in 1:length(gtflist)){
+  command<-paste0("gffread ",gtflist[i],
+                 " -g ",
+                 "~/KIZ/shuju_from_web/RefNome/Human/fa/GRCh37.p13.genome.fa -w ",
+                 gtflist[i],".fasta") #generate the command
+  system(command,intern = T)
+  
+}
+
+
+#plot heat maps
 source("./heatplot.R")
 
 ######
