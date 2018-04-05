@@ -31,7 +31,12 @@ for (i in 1:length(gtflist)){
   system(command,intern = T)
   
 }
+#####
 
+#Extract the features
+
+cur_path = getwd()
+system(paste("python process.py ",cur_path,sep=" "))
 
 #plot heat maps
 source("./heatplot.R")
